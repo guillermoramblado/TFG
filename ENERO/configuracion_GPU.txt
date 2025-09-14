@@ -1,0 +1,53 @@
+Configuración instalada en mi equipo:
+* WSL2 con Ubuntu 20.04
+* Versiones:
+    - Python 3.9.5
+    -  GCC 9.4.0
+    - CUDA 12.3
+    - CUDNN 9 (compatible para todas las subversiones 12.X de CUDA)
+    - Tensorflow 2.19.0
+    - Driver NVIDIA 580.97
+
+
+
+https://docs.nvidia.com/cuda/wsl-user-guide/index.html  (INSTALACIÓN CUDA)
+https://learn.microsoft.com/es-mx/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package (INSTALACION WSL2)
+
+
+Pasos:
+
+1. Configuración de WSL2
+    1.1 Instalar la versión correspondiente de Python en la WSL2 --> https://learn.microsoft.com/es-mx/windows/wsl/install
+    1.2 Instalar paquete venv (para crear entornos virtuales) y crear entorno virtuales
+    1.3 Instalar dependiencias del proyecto indicadas en 'requirements.txt' una vez activado el entorno virtual
+    1.4 Instalar el paquete personalizado de gym-graph
+
+2. Configuración del driver de la tarjeta gráfica --> Comprobar si tenemos instalado un driver en el SO host
+ejecutando 'nvidia-smi'. Luego en el WSL2
+
+3. Descarga e instalación de CUDA 12.3 en WSL2. Seguir esto --> https://docs.nvidia.com/cuda/wsl-user-guide/index.html
+    3.1 Si no se ha hecho, añadir las siguientes líneas al archivo .bashrc situado en $HOME:
+        export CUDA_HOME=/usr/local/cuda
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+        export PATH=$PATH:$CUDA_HOME/bin
+    3.2 Recargar el archivo para plasmar los cambios realizados: source ~/.bashrc
+    3.3 Verificamos la instalación de CUDA --> nvcc --version
+
+4. Descarga e instalación de CUDNN-9: seguir el vídeo:
+https://www.youtube.com/watch?v=WFzCqJB_GFk&ab_channel=TechJotters
+equivalente a seguir las indicaciones mencionadas en https://docs.nvidia.com/deeplearning/cudnn/installation/latest/linux.html
+
+5. Probar que CuDNN funcione descargando y ejecutando una serie de ejemplos:
+https://blog.takurohuang.com/2023/08/28/install-cuda-and-cudnn-on-wsl2/?utm_source=chatgpt.com
+junto con https://docs.nvidia.com/deeplearning/cudnn/archives/cudnn-897/install-guide/index.html#verify (punto 1.4)
+
+
+TODO ESTO FUNCIONA SIN PROBLEMAS EN MI PC, USANDO WSL 2 CON UBUNTU 20.04, pero mi gráfica es muy lenta.
+
+OPTO POR INSTALAR TENSORFLOW-DIRECTML DIRECTAMENTE EN WINDOWS 10 (ordenador de Pablo), ya que en principio tensorflow no ofrece soporte para GPU's que no pertenezcan a la familia NVIDIA.
+Esta variante permite hacer uso de otras familias de GPU's como AMD (en este caso). Voy a probarlo --> No funciona porque esta variante trabaja sobre Tensorflow 1.x (1.15...), no con la segunda familia de versiones de
+tensorflow, a pesar de que se detectase la GPU de AMD.
+
+OPTO POR INSTALAR EL PLUGIN DE TENSORFLOW 2, compatible para una versión específica de tensorflow (¿Funcionará?)
+Al final esto ha sido lo que ha funcionado, generando un entorno de nombre 'plugin_directml' con todas las dependencias del proyecto instaladas
+Ahora voy a implementar un pequeño código donde comparo la velocidad de ejecución de la CPU vs GPU

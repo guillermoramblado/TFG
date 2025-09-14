@@ -1,0 +1,9 @@
+Usar el prefijo ! para ejecutar comandos en la terminal de Kaggle.
+Comandos de ejemplos para bash:
+    * !pwd : directorio actual de trabajo
+    * !ls : visualizar archivos dentro del directorio donde nos situamos
+    * %cd .. : desplazarnos a otro directorio
+
+A nivel de código:
+    * os.getcwd()
+    
