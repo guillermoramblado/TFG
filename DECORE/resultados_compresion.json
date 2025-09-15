@@ -1,0 +1,37 @@
+{
+    "DECORE_0.0": {
+        "PorcentajeCompresion": 35.78,
+        "Uso": 2.3144,
+        "Recompensa": -4.0292
+    },
+    "DECORE_2.2": {
+        "PorcentajeCompresion": 10.0,
+        "Uso": 1.9026,
+        "Recompensa": -1.8998
+    },
+    "APAGADO_ALEATORIO_10%": {
+        "PorcentajeCompresion": 2.9,
+        "Uso": 1.5613,
+        "Recompensa": 0.3588
+    },
+    "APAGADO_ALEATORIO_20%": {
+        "PorcentajeCompresion": 5.62,
+        "Uso": 1.5419,
+        "Recompensa": 0.1035
+    },
+    "APAGADO_ALEATORIO_30%": {
+        "PorcentajeCompresion": 8.14,
+        "Uso": 1.6973,
+        "Recompensa": -0.2118
+    },
+    "APAGADO_ALEATORIO_40%": {
+        "PorcentajeCompresion": 10.47,
+        "Uso": 1.5518,
+        "Recompensa": 0.1568
+    },
+    "APAGADO_ALEATORIO_50%": {
+        "PorcentajeCompresion": 12.62,
+        "Uso": 2.1738,
+        "Recompensa": -0.6125
+    }
+}
